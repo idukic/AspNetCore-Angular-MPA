@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<app asp-prerender-module="ClientApp/dist/app2-server">Loading...</app>
+
+<script src="~/dist/vendor.js" asp-append-version="true"></script>
+
+@section scripts {
+    <script src="~/dist/app2-client.js" asp-append-version="true"></script>
+}

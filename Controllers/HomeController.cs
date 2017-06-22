@@ -18,4 +18,13 @@ namespace CorePlusAngularJSServices.Controllers
             return View();
         }
     }
+
+    public class Home2Controller : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();   
+        }
+
+    }
 }

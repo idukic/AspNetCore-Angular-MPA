@@ -36,6 +36,7 @@ module.exports = (env) => {
         //},
         entry: {
             'main-client': './ClientApp/appOne/boot-client.ts',
+            'app2-client': './ClientApp/appTwo/boot-client.ts'
         },
         output: {
             path: path.join(__dirname, clientBundleOutputDir)
@@ -61,19 +62,20 @@ module.exports = (env) => {
     const serverBundleConfig = merge(sharedConfig, {
         resolve: { mainFields: ['main'] },
         entry: {
-            'main-server': './ClientApp/appOne/boot-server.ts'
+            'main-server': './ClientApp/appOne/boot-server.ts',
+            'app2-server': './ClientApp/appTwo/boot-server.ts'
         },
         plugins: [
             new webpack.DllReferencePlugin({
                 context: __dirname,
-                manifest: require('./ClientApp/appOne/dist/vendor-manifest.json'),
+                manifest: require('./ClientApp/dist/vendor-manifest.json'),
                 sourceType: 'commonjs2',
                 name: './vendor'
             })
         ],
         output: {
             libraryTarget: 'commonjs',
-            path: path.join(__dirname, './ClientApp/appOne/dist')
+            path: path.join(__dirname, './ClientApp/dist')
         },
         target: 'node',
         devtool: 'inline-source-map'
